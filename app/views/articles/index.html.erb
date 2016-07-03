@@ -1,0 +1,62 @@
+<p align = 'right'><% if user_signed_in? %>
+    <span>Здравствуйте, <%= current_user.email %></span>
+    <%= link_to 'Выйти', destroy_user_session_path, :method => :delete %>
+<% else %>
+    <%= link_to 'Войти', new_user_session_path %> или <%= link_to 'Зарегистрироваться', new_user_registration_path %>
+<% end %>
+</p>
+<h1>Все статьи</h1><h4 align = 'right'><%= Time.now =%></h4>
+<%= link_to 'Новая статья', new_article_path %>
+
+
+<style>
+   table {
+    
+    border: 1px solid green; /* Рамка вокруг таблицы */
+    margin: auto; /* Выравниваем таблицу по центру окна  */
+   }
+   td {
+    text-align: center; /* Выравниваем текст по центру ячейки */
+   }
+</style>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<table>
+  <tr>
+   
+    <th>Заголовок</th>
+    <th>Содержание статьи</th>
+    
+  </tr>
+ 
+  <% @articles.each do |article| %>
+    <tr>
+     
+      <td><%= article.title  %></td>
+      <td><%= article.text %></td>
+     
+      <td><%= link_to 'Просмотр', article_path(article) %></td>
+      <td><%= link_to 'Редактирование', edit_article_path(article) %></td>
+      <td><%= link_to 'Удаление', article_path(article),
+                    method: :delete,
+                    data: { confirm: 'Вы уверены?' } %></td>
+    </tr>
+  <% end %>
+</table
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

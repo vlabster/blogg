@@ -1,0 +1,50 @@
+<p>
+  <strong>Заголовок:</strong>
+  <%= @article.title %>
+</p>
+ 
+<p>
+  <strong>Текст:</strong>
+  <%= @article.text %>
+</p>
+
+<h2>Комментарии</h2>
+<% @article.comments.each do |comment| %>
+  <p>
+    <strong>Comment</strong>
+    <%= comment.commenter %>
+  </p>
+
+ 
+  <p>
+    <strong>Комментарий</strong>
+    <%= comment.body %>
+  </p>
+<p>
+  <%= link_to 'Удалить коментарий', [comment.article, comment],
+               method: :delete,
+               data: { confirm: 'Вы уверены?' } %>
+
+</p>
+
+<% end %>
+
+
+<h2>Добавить комментарий:</h2>
+<%= form_for([@article, @article.comments.build]) do |f| %>
+  <p>
+    <%= f.label :Имя %><br>
+    <%= f.text_field :commenter %>
+  </p>
+  <p>
+    <%= f.label :Комментарий %><br>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit :'Отправить комментарий' %>
+  </p>
+<% end %>
+
+<%= link_to 'Редактировать', edit_article_path(@article) %> |
+<%= link_to 'Назад', articles_path %>
+
