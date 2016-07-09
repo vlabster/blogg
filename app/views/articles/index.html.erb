@@ -6,7 +6,7 @@
 <% end %>
 </p>
 <h1>Все статьи</h1><h4 align = 'right'><%= Time.now =%></h4>
-<%= link_to 'Новая статья', new_article_path %>
+<%= link_to 'Новая статья', novaya_statya_chpu_path %>
 
 
 <style>
@@ -27,6 +27,7 @@
    
     <th>Заголовок</th>
     <th>Содержание статьи</th>
+    <th>Время создания</th>
     
   </tr>
  
@@ -35,9 +36,10 @@
      
       <td><%= article.title  %></td>
       <td><%= article.text %></td>
+      <td><%= article.created_at %><td>
      
-      <td><%= link_to 'Просмотр', article_path(article) %></td>
-      <td><%= link_to 'Редактирование', edit_article_path(article) %></td>
+      <td><%= link_to 'Просмотр', id_statya_chpu_path(article) %></td>
+      <td><%= link_to 'Редактирование', edit_chpu_path(article) %></td>
       <td><%= link_to 'Удаление', article_path(article),
                     method: :delete,
                     data: { confirm: 'Вы уверены?' } %></td>

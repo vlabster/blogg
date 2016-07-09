@@ -8,12 +8,15 @@
   <%= @article.text %>
 </p>
 
+
 <h2>Комментарии</h2>
 <% @article.comments.each do |comment| %>
   <p>
     <strong>Comment</strong>
     <%= comment.commenter %>
   </p>
+
+
 
  
   <p>
@@ -45,6 +48,6 @@
   </p>
 <% end %>
 
-<%= link_to 'Редактировать', edit_article_path(@article) %> |
-<%= link_to 'Назад', articles_path %>
+<%= link_to 'Редактировать', edit_chpu_path(@article) %> |
+<%= link_to 'Назад', new_chpu_path %>
 

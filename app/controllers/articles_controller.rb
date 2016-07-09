@@ -18,8 +18,9 @@ class ArticlesController < ApplicationController
 
   def create
    @article = Article.new(article_params)
-    if @article.save
-      redirect_to @article
+    if  @article.save
+      @article = new_chpu_path
+      redirect_to @article 
     else
       render 'new'
     end
@@ -28,7 +29,8 @@ class ArticlesController < ApplicationController
   def update
    @article = Article.find(params[:id])
     if @article.update(article_params)
-      redirect_to @article
+      @article = id_statya_chpu_path
+      redirect_to @article 
     else
       render 'edit'
     end
@@ -37,7 +39,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-    redirect_to articles_path
+    redirect_to new_chpu_path
   end
 
 
